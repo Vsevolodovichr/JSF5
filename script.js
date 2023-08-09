@@ -1,34 +1,4 @@
 //1
-class Circle {
-    constructor(x, y, radius) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-    }
-
-    get_circumference() {
-        return 2 * Math.PI * this.radius;
-    }
-
-    static get_circumference_by_radius(radius) {
-        return 2 * Math.PI * radius;
-    }
-
-    copy() {
-        return new Circle(this.x, this.y, this.radius);
-    }
-
-    is_point_inside(x, y) {
-        const distance = Math.sqrt((x - this.x)**2 + (y - this.y)**2);
-        return distance <= this.radius;
-    }
-
-    toString() {
-        return `Circle with center at (${this.x}, ${this.y}) and radius ${this.radius}`;
-    }
-}
-
-// Приклад використання класу Circle
 const circle1 = new Circle(0, 0, 5);
 console.log(`Circumference of circle1: ${circle1.get_circumference()}`);
 
@@ -58,15 +28,37 @@ let myObject = {
   
   console.log(count); 
   // 3
-  const person = new Person("John", "Doe");
-  person.showFullName();
-  // Вивід: John Doe
-  
+  const person = new Person("Roman", "Skurenko");
+  person.showFullName();  
   const student = new Student("Mary", "Smith", 2020);
-  student.showFullName("John");
-  // Вивід: Mary John Smith
-  
+  student.showFullName("Roman"); 
   student.showCourse();
-  // Вивід: Course: 3
   //4
-  
+  const marker = new Marker("blue");
+marker.print("Hello, world!");
+marker.inkLevel; 
+marker.refill();
+marker.inkLevel; 
+//5
+const worker1 = new Worker("John Doe", 100, 20);
+const worker2 = new Worker("Jane Doe", 150, 30);
+
+console.log(worker1.showSalary()); // 2000
+console.log(worker2.showSalary()); // 4500
+
+worker1.experience = 1.5;
+
+console.log(worker1.showSalary()); // 3000
+
+const workers = [
+  new Worker("John Doe", 100, 20, 1.2),
+  new Worker("Jane Doe", 150, 30, 1.5),
+  new Worker("Peter Doe", 200, 40, 1.8),
+];
+
+workers.sort((a, b) => a.experience - b.experience);
+
+for (const worker of workers) {
+  console.log(worker.fullName + ": " + worker.showSalary());
+}
+//
